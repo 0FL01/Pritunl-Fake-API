@@ -1,3 +1,34 @@
+# Simplified Pritunl Fake API Fork
+
+This is a simplified fork of the original Pritunl Fake API that significantly streamlines the setup process.
+
+## What's Changed
+
+- **Simplified Deployment**: The fake API is now hosted directly on the host machine - no separate API server setup required
+- **SSL Validation Disabled**: Pritunl's SSL validation has been bypassed to eliminate certificate issues
+- **Automatic Activation**: The fake API server is automatically activated on the first Pritunl startup
+
+## Quick Setup
+
+1. Install Pritunl normally on your server
+2. Run the setup script (it will automatically configure everything)
+3. Access the Pritunl web interface
+4. **Manual activation required**: In the web interface, activate the license using:
+   ```
+   bad premium
+   ```
+   or
+   ```
+   active ultimate
+   ```
+
+That's it! No additional API server configuration needed.
+
+## Original Repository
+
+<details>
+<summary>Click to view original repository description</summary>
+
 # What is this? #
 This neat script provides a little fake API to unlock all premium/enterprise/enterprise+ (here called ultimate) features of your own Pritunl VPN server. If Pritunl wouldn't be mostly free already, you could call this a crack. An Open Source crack.
 
@@ -46,3 +77,9 @@ See the documentation in [Patched Pritunl Docker Install](docs/docker/pritunl-pa
 * SSO will not work with this api version! As Pritunls own authentication servers handle the whole SSO stuff, track instance ids and verify users, I won't implement this part for privacy concerns (and also this would need to be securly implemented and a database).
 
 Have fun with your new premium/enterprise/ultimate Pritunl instance!
+
+</details>
+
+## Support
+
+Please support the original Pritunl developers by purchasing a subscription for your enterprise or company if you find this tool useful!
