@@ -8,21 +8,85 @@ This is a simplified fork of the original Pritunl Fake API that significantly st
 - **SSL Validation Disabled**: Pritunl's SSL validation has been bypassed to eliminate certificate issues
 - **Automatic Activation**: The fake API server is automatically activated on the first Pritunl startup
 
+## Docker Installation (Recommended)
+
+### Option 1: Using Pre-built Images (Fastest)
+
+1. **Clone the repository**:
+
+2. **Start with pre-built images**:
+   ```bash
+   docker-compose up -d
+   ```
+
+3. **Access Pritunl web interface**:
+   - Open: https://127.0.0.1:443 (or your server IP)
+   - Ignore SSL certificate warnings (self-signed)
+
+4. **Manual activation required**:
+   - Login to web interface
+   - Enter activation command: `bad premium` or `active ultimate`
+
+### Option 2: Build from Source
+
+1. **Clone repo and prepare**:
+
+2. **Build custom images**:
+   ```bash
+   # Build Pritunl with fake API integration
+   docker-compose build pritunl
+   
+   # Or build API server separately
+   docker-compose build prutunl-api
+   ```
+
+3. **Start services**:
+   ```bash
+   docker-compose up -d
+   ```
+
+## Service Architecture
+
+The Docker setup includes three services:
+
+- **pritunl**: Main Pritunl server (privileged, host networking)
+- **prutunl-api**: Fake API server (handles license validation)
+- **mongo**: MongoDB database for Pritunl
+
+### Port Mapping
+- Pritunl Web UI: `https://127.0.0.1:443`
+- MongoDB: `127.0.0.1:27017` (internal)
+- Fake API: `127.0.0.1:8443` (internal)
+
+### Volume Mapping
+- `./pritunl_data:/var/lib/pritunl` - Pritunl configuration
+- `./mongo_data:/data/db` - MongoDB data
+- `/dev/net/tun:/dev/net/tun` - TUN device for VPN
+
 ## Quick Setup
 
-1. Install Pritunl normally on your server
-2. Run the setup script (it will automatically configure everything)
-3. Access the Pritunl web interface
-4. **Manual activation required**: In the web interface, activate the license using:
-   ```
-   bad premium
-   ```
-   or
-   ```
-   active ultimate
+1. **Install Docker and Docker Compose**:
+
+2. **Launch the stack**:
+   ```bash
+   docker-compose up -d
    ```
 
-That's it! No additional API server configuration needed.
+3. **Wait for initialization** (2-3 minutes):
+   ```bash
+   docker-compose logs -f pritunl
+   ```
+
+4. **Access and activate**:
+   - Navigate to https://127.0.0.1:443
+   - Complete initial setup wizard
+   - Use activation command: `bad premium` or `active ultimate`
+
+## Troubleshooting
+
+### Common Issues
+- **SSL Certificate Warnings**: Expected with self-signed certificates
+- **MongoDB connection failed**: Ensure MongoDB container is running
 
 ## Original Repository
 
