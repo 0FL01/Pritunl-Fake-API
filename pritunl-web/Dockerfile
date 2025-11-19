@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 
-RUN apt-get update && apt-get install -y curl gnupg ca-certificates iptables vim \
+RUN apt-get update && apt-get install -y curl gnupg ca-certificates iptables iproute2 vim \
     && curl -fsSL https://www.mongodb.org/static/pgp/server-8.0.asc | gpg -o /usr/share/keyrings/mongodb-server-8.0.gpg --dearmor --yes \
     && curl -fsSL https://swupdate.openvpn.net/repos/repo-public.gpg | gpg -o /usr/share/keyrings/openvpn-repo.gpg --dearmor --yes \
     && curl -fsSL https://raw.githubusercontent.com/pritunl/pgp/master/pritunl_repo_pub.asc | gpg -o /usr/share/keyrings/pritunl.gpg --dearmor --yes \

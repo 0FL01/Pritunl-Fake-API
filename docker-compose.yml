@@ -1,6 +1,6 @@
 services:
   pritunl:
-    image: 0fl01/pritunl-web:v1.32.4400.99.47eb68 
+    image: 0fl01/pritunl-web:v1.32.4400.99.47eb68
     #build:
     #  context: .
     #  dockerfile: pritunl-web/Dockerfile
@@ -16,17 +16,27 @@ services:
       - PRITUNL_DEBUG=false
       - PRITUNL_API=127.0.0.1:8443
     restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: 1m
+        max-file: 3
     depends_on:
       - mongo
 
-  prutunl-api:
-    image: docker.io/0fl01/pritunl-api:0.0.2 
+  pritunl-api:
+    image: docker.io/0fl01/pritunl-api:0.0.2
     #build:
     #  context: .
     #  dockerfile: fake-api-server/Dockerfile
     #image: prutunl-api:bundled
-    container_name: prutunl-api
+    container_name: pritunl-api
     restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: 1m
+        max-file: 3
     ports:
       #- "80:80"
       - "127.0.0.1:8443:443"
@@ -39,4 +49,9 @@ services:
     ports:
       - "127.0.0.1:27017:27017"
     restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: 1m
+        max-file: 3
 
