@@ -10,12 +10,12 @@ originalAuthServer = 'auth.pritunl.com'
 defaultApiServer = 'pritunl-api.simonmicro.de'
 searchIn = [*glob.glob('/usr/lib/python3*'), '/usr/lib/pritunl/', '/usr/share/pritunl/www/', '/usr/lib/pritunl/', '/usr/share/pritunl/www/']
 
-print("  ____       _ _               _   _____     _             _    ____ ___ ")
-print(" |  _ \ _ __(_) |_ _   _ _ __ | | |  ___|_ _| | _____     / \  |  _ \_ _|")
-print(" | |_) | '__| | __| | | | '_ \| | | |_ / _` | |/ / _ \   / _ \ | |_) | | ")
-print(" |  __/| |  | | |_| |_| | | | | | |  _| (_| |   <  __/  / ___ \|  __/| | ")
-print(" |_|   |_|  |_|\__|\__,_|_| |_|_| |_|  \__,_|_|\_\___| /_/   \_\_|  |___|")
-print("                                                                         ")
+print(r"  ____       _ _               _   _____     _             _    ____ ___ ")
+print(r" |  _ \ _ __(_) |_ _   _ _ __ | | |  ___|_ _| | _____     / \  |  _ \_ _|")
+print(r" | |_) | '__| | __| | | | '_ \| | | |_ / _` | |/ / _ \   / _ \ | |_) | | ")
+print(r" |  __/| |  | | |_| |_| | | | | | |  _| (_| |   <  __/  / ___ \|  __/| | ")
+print(r" |_|   |_|  |_|\__|\__,_|_| |_|_| |_|  \__,_|_|\_\___| /_/   \_\_|  |___|")
+print(r"                                                                         ")
 
 sel = None
 interactive = True
