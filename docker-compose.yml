@@ -14,7 +14,7 @@ services:
       - PRITUNL_MONGODB_URI=mongodb://127.0.0.1:27017/pritunl
       - PRITUNL_BIND_ADDR=0.0.0.0
       - PRITUNL_DEBUG=false
-      - PRITUNL_API=127.0.0.1:8443
+      - PRITUNL_API=127.0.0.1:8443 # or default from author `pritunl-api.simonmicro.de`
     restart: unless-stopped
     logging:
       driver: json-file
