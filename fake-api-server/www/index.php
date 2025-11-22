@@ -21,8 +21,8 @@ $clientVersion = isset($body->version) ? $body->version : null;
 
 // Fake API
 $result = null;
-if (version_compare(PHP_VERSION, '8.0.0', '<')) {
-    $result = array('error_msg' => 'This API only supports PHP 8 or higher.');
+if (version_compare(PHP_VERSION, '8.4.0', '<')) {
+    $result = array('error_msg' => 'This API only supports PHP 8.4 or higher.');
     $code = 500;
 } else if(isset($_GET['path'])) {
     $path = trim($_GET['path'], ' /');

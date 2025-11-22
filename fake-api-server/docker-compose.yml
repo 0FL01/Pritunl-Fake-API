@@ -1,12 +1,12 @@
 services:
-  prutunl-api:
-    image: docker.io/0fl01/pritunl-api:0.0.2 
-    #build:
-    #  context: .
-    #  dockerfile: Dockerfile
-    #image: prutunl-api:bundled
-    container_name: prutunl-api
+  pritunl-api:
+    #image: docker.io/0fl01/pritunl-api:0.0.2 
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: prutunl-api
+    container_name: pritunl-api
     restart: unless-stopped
     ports:
-      - "80:80"
-      - "443:443"
+      #- "80:80"
+      - "8443:443"
