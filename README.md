@@ -16,7 +16,7 @@ This is a simplified fork of the original Pritunl Fake API that significantly st
 
 2. **Start with pre-built images**:
    ```bash
-   docker-compose up -d
+   docker compose up -d
    ```
 
 3. **Access Pritunl web interface**:
@@ -34,15 +34,15 @@ This is a simplified fork of the original Pritunl Fake API that significantly st
 2. **Build custom images**:
    ```bash
    # Build Pritunl with fake API integration
-   docker-compose build pritunl
+   docker compose build pritunl
    
    # Or build API server separately
-   docker-compose build prutunl-api
+   docker compose build prutunl-api
    ```
 
 3. **Start services**:
    ```bash
-   docker-compose up -d
+   docker compose up -d
    ```
 
 ## Service Architecture
@@ -69,12 +69,12 @@ The Docker setup includes three services:
 
 2. **Launch the stack**:
    ```bash
-   docker-compose up -d
+   docker compose up -d
    ```
 
 3. **Wait for initialization** (2-3 minutes):
    ```bash
-   docker-compose logs -f pritunl
+   docker compose logs -f pritunl
    ```
 
 4. **Access and activate**:

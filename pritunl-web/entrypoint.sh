@@ -6,6 +6,7 @@ set -e
 : "${PRITUNL_PORT:=443}"
 : "${PRITUNL_LOG_PATH:=/var/log/pritunl.log}"
 : "${PRITUNL_DEBUG:=false}"
+: "${PRITUNL_API:=127.0.0.1:63134}"
 
 cat <<EOF > /etc/pritunl.conf
 {

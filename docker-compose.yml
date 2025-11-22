@@ -1,9 +1,9 @@
 services:
   pritunl:
-    image: 0fl01/pritunl-web:v1.32.4400.99.47eb68
-    #build:
-    #  context: .
-    #  dockerfile: pritunl-web/Dockerfile
+    #image: 0fl01/pritunl-web:v1.32.4400.99.47eb68-full
+    build:
+      context: ./pritunl-web
+      dockerfile: Dockerfile
     container_name: pritunl
     privileged: true
     network_mode: host
@@ -14,7 +14,6 @@ services:
       - PRITUNL_MONGODB_URI=mongodb://127.0.0.1:27017/pritunl
       - PRITUNL_BIND_ADDR=0.0.0.0
       - PRITUNL_DEBUG=false
-      - PRITUNL_API=127.0.0.1:8443 # or default from author `pritunl-api.simonmicro.de`
     restart: unless-stopped
     logging:
       driver: json-file
@@ -23,23 +22,6 @@ services:
         max-file: 3
     depends_on:
       - mongo
-
-  pritunl-api:
-    image: docker.io/0fl01/pritunl-api:0.0.2
-    #build:
-    #  context: .
-    #  dockerfile: fake-api-server/Dockerfile
-    #image: prutunl-api:bundled
-    container_name: pritunl-api
-    restart: unless-stopped
-    logging:
-      driver: json-file
-      options:
-        max-size: 1m
-        max-file: 3
-    ports:
-      #- "80:80"
-      - "127.0.0.1:8443:443"
 
   mongo:
     image: mongo:8.0
